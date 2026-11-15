@@ -1,0 +1,1617 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CIRQVEX OFFICIAL</title>
+
+<style>
+:root {
+ --red:#ed203b;
+ --red2:#a90019;
+ --bg:#090909;
+ --panel:#151315;
+ --border:#30272a;
+ --text:#fff;
+ --muted:#999;
+}
+
+* {
+ margin:0;
+ padding:0;
+ box-sizing:border-box;
+ font-family:Arial,sans-serif;
+}
+
+body {
+ background:var(--bg);
+ color:var(--text);
+ min-height:100vh;
+}
+
+button,input,textarea,select {
+ font:inherit;
+}
+
+button {
+ cursor:pointer;
+}
+
+a {
+ color:inherit;
+ text-decoration:none;
+}
+
+/* HEADER */
+
+header {
+ height:70px;
+ position:sticky;
+ top:0;
+ z-index:100;
+ background:#100e0ff2;
+ border-bottom:1px solid var(--border);
+ backdrop-filter:blur(15px);
+}
+
+.navbar {
+ max-width:1250px;
+ height:100%;
+ margin:auto;
+ padding:0 22px;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+}
+
+.logo {
+ font-size:27px;
+ font-weight:900;
+ letter-spacing:3px;
+}
+
+.logo span {
+ color:var(--red);
+}
+
+.header-right {
+ display:flex;
+ align-items:center;
+ gap:12px;
+}
+
+.header-btn {
+ background:#211719;
+ color:white;
+ border:1px solid var(--border);
+ border-radius:9px;
+ padding:11px 14px;
+}
+
+.header-btn:hover {
+ border-color:var(--red);
+ color:var(--red);
+}
+
+.menu-button {
+ width:43px;
+ height:42px;
+ font-size:23px;
+}
+
+/* DRAWER MENU */
+
+.overlay {
+ position:fixed;
+ inset:0;
+ background:#000b;
+ z-index:190;
+ display:none;
+}
+
+.overlay.show {
+ display:block;
+}
+
+.drawer {
+ position:fixed;
+ top:0;
+ right:-320px;
+ width:300px;
+ max-width:85%;
+ height:100vh;
+ background:#131012;
+ border-left:1px solid #53232d;
+ z-index:200;
+ padding:25px;
+ transition:.3s;
+ overflow-y:auto;
+}
+
+.drawer.open {
+ right:0;
+}
+
+.drawer-header {
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ padding-bottom:25px;
+ border-bottom:1px solid var(--border);
+}
+
+.close-menu {
+ background:none;
+ border:0;
+ color:white;
+ font-size:28px;
+}
+
+.drawer-label {
+ color:#777;
+ font-size:10px;
+ letter-spacing:2px;
+ margin:25px 0 12px;
+}
+
+.menu-link {
+ width:100%;
+ display:flex;
+ align-items:center;
+ gap:13px;
+ padding:15px;
+ margin-bottom:7px;
+ background:transparent;
+ color:#ccc;
+ border:1px solid transparent;
+ border-radius:9px;
+ text-align:left;
+ font-size:14px;
+}
+
+.menu-link:hover,
+.menu-link.active {
+ background:#32141b;
+ color:white;
+ border-color:#64202e;
+}
+
+.menu-link .menu-icon {
+ width:23px;
+ text-align:center;
+ color:var(--red);
+ font-size:18px;
+}
+
+/* PAGE SYSTEM */
+
+.page {
+ display:none;
+ min-height:calc(100vh - 70px);
+ animation:fade .25s ease;
+}
+
+.page.active {
+ display:block;
+}
+
+@keyframes fade {
+ from {opacity:0;transform:translateY(5px)}
+ to {opacity:1;transform:translateY(0)}
+}
+
+.content {
+ max-width:1200px;
+ margin:auto;
+ padding:35px 22px 60px;
+}
+
+.page-title {
+ margin-bottom:28px;
+}
+
+.page-title h1 {
+ font-size:30px;
+ margin-bottom:8px;
+}
+
+.page-title p {
+ color:var(--muted);
+ font-size:13px;
+ line-height:1.7;
+}
+
+/* BUTTONS */
+
+.primary {
+ background:linear-gradient(110deg,var(--red),var(--red2));
+ color:white;
+ border:0;
+ padding:13px 21px;
+ border-radius:8px;
+ font-weight:bold;
+}
+
+.primary:hover {
+ box-shadow:0 5px 25px #ed203b55;
+ transform:translateY(-2px);
+}
+
+.secondary {
+ background:#211719;
+ color:white;
+ border:1px solid var(--border);
+ padding:12px 18px;
+ border-radius:8px;
+}
+
+/* HOME */
+
+.home-hero {
+ min-height:350px;
+ padding:55px;
+ border-radius:20px;
+ display:flex;
+ align-items:center;
+ position:relative;
+ overflow:hidden;
+ background:
+ radial-gradient(circle at 85% 40%,#97172b,transparent 38%),
+ linear-gradient(120deg,#211012,#100d0e);
+ border:1px solid #53232d;
+}
+
+.home-hero-content {
+ max-width:600px;
+ position:relative;
+ z-index:2;
+}
+
+.tag {
+ color:#ff8290;
+ background:#43131d;
+ padding:8px 12px;
+ border-radius:20px;
+ font-size:11px;
+ display:inline-block;
+ margin-bottom:20px;
+}
+
+.home-hero h1 {
+ font-size:clamp(35px,6vw,60px);
+ line-height:1.12;
+ margin-bottom:18px;
+}
+
+.home-hero h1 span {
+ color:var(--red);
+}
+
+.home-hero p {
+ color:#bbb;
+ line-height:1.8;
+ font-size:14px;
+ margin-bottom:24px;
+}
+
+.hero-watermark {
+ position:absolute;
+ right:7%;
+ font-size:200px;
+ font-weight:900;
+ color:#ffffff0a;
+}
+
+.company-section {
+ margin-top:55px;
+}
+
+.company-section h2 {
+ margin-bottom:16px;
+}
+
+.company-section p {
+ color:#aaa;
+ line-height:1.9;
+ font-size:14px;
+ max-width:850px;
+}
+
+.info-grid {
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:15px;
+ margin-top:25px;
+}
+
+.info-card {
+ background:var(--panel);
+ border:1px solid var(--border);
+ padding:22px;
+ border-radius:12px;
+}
+
+.info-card .symbol {
+ font-size:27px;
+ color:var(--red);
+ margin-bottom:15px;
+}
+
+.info-card h3 {
+ font-size:15px;
+ margin-bottom:9px;
+}
+
+.info-card p {
+ font-size:12px;
+ color:#999;
+ line-height:1.7;
+}
+
+/* STORE PAGE */
+
+.store-toolbar {
+ display:flex;
+ gap:10px;
+ margin-bottom:20px;
+}
+
+.store-search {
+ flex:1;
+ min-width:0;
+ padding:14px;
+ border:1px solid var(--border);
+ background:#171416;
+ color:white;
+ border-radius:9px;
+ outline:none;
+}
+
+.store-search:focus {
+ border-color:var(--red);
+}
+
+.categories {
+ display:flex;
+ gap:9px;
+ overflow-x:auto;
+ padding-bottom:12px;
+ margin-bottom:20px;
+}
+
+.categories button {
+ white-space:nowrap;
+ background:#171416;
+ color:#bbb;
+ border:1px solid var(--border);
+ border-radius:30px;
+ padding:10px 17px;
+ font-size:12px;
+}
+
+.categories button.active {
+ background:var(--red);
+ color:white;
+ border-color:var(--red);
+}
+
+.product-grid {
+ display:grid;
+ grid-template-columns:repeat(4,minmax(0,1fr));
+ gap:17px;
+}
+
+.product-card {
+ background:#151315;
+ border:1px solid var(--border);
+ border-radius:13px;
+ overflow:hidden;
+ transition:.2s;
+}
+
+.product-card:hover {
+ transform:translateY(-4px);
+ border-color:#8d2736;
+}
+
+.product-picture {
+ height:190px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ background:linear-gradient(135deg,#28171b,#110f10);
+ font-size:65px;
+}
+
+.product-detail {
+ padding:16px;
+}
+
+.product-detail small {
+ color:#ff5266;
+ font-size:10px;
+}
+
+.product-detail h3 {
+ font-size:14px;
+ margin:9px 0;
+}
+
+.product-detail p {
+ color:#999;
+ font-size:12px;
+ line-height:1.6;
+ min-height:35px;
+}
+
+.product-price {
+ font-size:17px;
+ font-weight:bold;
+ margin:15px 0;
+}
+
+.add-button {
+ width:100%;
+ background:#37151d;
+ color:white;
+ border:1px solid #6c2734;
+ border-radius:8px;
+ padding:11px;
+}
+
+.add-button:hover {
+ background:var(--red);
+}
+
+/* GALLERY */
+
+.gallery-grid {
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:17px;
+}
+
+.gallery-item {
+ background:var(--panel);
+ border:1px solid var(--border);
+ border-radius:12px;
+ overflow:hidden;
+}
+
+.gallery-image {
+ height:210px;
+ display:grid;
+ place-items:center;
+ font-size:75px;
+ background:linear-gradient(135deg,#39131b,#161112);
+}
+
+.gallery-item h3 {
+ padding:15px;
+ font-size:14px;
+}
+
+/* PORTFOLIO */
+
+.portfolio-grid {
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:18px;
+}
+
+.portfolio-card {
+ background:var(--panel);
+ border:1px solid var(--border);
+ border-radius:13px;
+ padding:25px;
+}
+
+.portfolio-card h3 {
+ margin:12px 0;
+}
+
+.portfolio-card p {
+ color:#999;
+ line-height:1.8;
+ font-size:13px;
+}
+
+/* PAYMENT */
+
+.payment-layout {
+ display:grid;
+ grid-template-columns:1.5fr 1fr;
+ gap:20px;
+ align-items:start;
+}
+
+.panel {
+ background:var(--panel);
+ border:1px solid var(--border);
+ border-radius:13px;
+ padding:22px;
+}
+
+.panel h2 {
+ font-size:19px;
+ margin-bottom:20px;
+}
+
+.form-group {
+ margin-bottom:17px;
+}
+
+.form-group label {
+ display:block;
+ font-size:12px;
+ color:#bbb;
+ margin-bottom:8px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+ width:100%;
+ padding:13px;
+ border-radius:8px;
+ background:#0c0b0c;
+ border:1px solid var(--border);
+ color:white;
+ outline:none;
+}
+
+.form-group textarea {
+ min-height:90px;
+ resize:vertical;
+}
+
+.order-row {
+ display:flex;
+ justify-content:space-between;
+ gap:10px;
+ padding:13px 0;
+ border-bottom:1px solid var(--border);
+ font-size:12px;
+}
+
+.total-row {
+ display:flex;
+ justify-content:space-between;
+ margin:20px 0;
+ font-weight:bold;
+}
+
+/* ABOUT / CONTACT */
+
+.contact-grid {
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:15px;
+}
+
+.contact-card {
+ background:var(--panel);
+ border:1px solid var(--border);
+ border-radius:12px;
+ padding:25px;
+}
+
+.contact-card h3 {
+ margin-bottom:12px;
+}
+
+.contact-card p {
+ color:#aaa;
+ line-height:1.8;
+ font-size:13px;
+}
+
+/* FOOTER */
+
+footer {
+ background:#100e0f;
+ border-top:1px solid var(--border);
+ padding:25px;
+ text-align:center;
+ color:#666;
+ font-size:11px;
+}
+
+/* TOAST */
+
+.toast {
+ position:fixed;
+ bottom:20px;
+ left:50%;
+ transform:translate(-50%,100px);
+ opacity:0;
+ background:#34151c;
+ border:1px solid var(--red);
+ border-radius:9px;
+ padding:13px 20px;
+ z-index:400;
+ font-size:12px;
+ transition:.3s;
+ text-align:center;
+}
+
+.toast.show {
+ transform:translate(-50%,0);
+ opacity:1;
+}
+
+.empty {
+ color:#888;
+ padding:25px 0;
+ font-size:13px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:850px) {
+ .product-grid {
+  grid-template-columns:repeat(2,minmax(0,1fr));
+ }
+
+ .home-hero {
+  padding:35px 25px;
+ }
+
+ .hero-watermark {
+  font-size:120px;
+ }
+
+ .info-grid {
+  grid-template-columns:repeat(2,1fr);
+ }
+}
+
+@media(max-width:550px) {
+ .product-picture {
+  height:145px;
+ }
+
+ .gallery-grid {
+  grid-template-columns:repeat(2,1fr);
+ }
+
+ .gallery-image {
+  height:140px;
+ }
+
+ .info-grid,
+ .portfolio-grid,
+ .contact-grid,
+ .payment-layout {
+  grid-template-columns:1fr;
+ }
+
+ .page-title h1 {
+  font-size:25px;
+ }
+
+ .home-hero {
+  min-height:360px;
+ }
+
+ .content {
+  padding:25px 15px 45px;
+ }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+ <nav class="navbar">
+
+  <a href="#" class="logo" onclick="navigate('home')">
+   RED<span>X</span>
+  </a>
+
+  <div class="header-right">
+   <button class="header-btn"
+    onclick="navigate('payment')">
+    🛒 <span id="cartCount">0</span>
+   </button>
+
+   <button class="header-btn menu-button"
+    onclick="openMenu()">☰</button>
+  </div>
+
+ </nav>
+</header>
+
+<!-- MENU OVERLAY -->
+<div class="overlay" id="overlay"
+ onclick="closeMenu()"></div>
+
+<!-- SIDE MENU -->
+<aside class="drawer" id="drawer">
+
+ <div class="drawer-header">
+  <div class="logo">RED<span>X</span></div>
+  <button class="close-menu"
+   onclick="closeMenu()">×</button>
+ </div>
+
+ <p class="drawer-label">MAIN MENU</p>
+
+ <button class="menu-link active"
+ data-page="home" onclick="navigate('home')">
+  <span class="menu-icon">⌂</span> Beranda
+ </button>
+
+ <button class="menu-link"
+ data-page="store" onclick="navigate('store')">
+  <span class="menu-icon">▣</span> Toko
+ </button>
+
+ <button class="menu-link"
+ data-page="gallery" onclick="navigate('gallery')">
+  <span class="menu-icon">▧</span> Pajangan
+ </button>
+
+ <button class="menu-link"
+ data-page="payment" onclick="navigate('payment')">
+  <span class="menu-icon">▤</span> Pembayaran
+ </button>
+
+ <button class="menu-link"
+ data-page="portfolio" onclick="navigate('portfolio')">
+  <span class="menu-icon">◈</span> Portofolio
+ </button>
+
+ <p class="drawer-label">INFORMASI PERUSAHAAN</p>
+
+ <button class="menu-link"
+ data-page="about" onclick="navigate('about')">
+  <span class="menu-icon">ⓘ</span> Tentang Kami
+ </button>
+
+ <button class="menu-link"
+ data-page="contact" onclick="navigate('contact')">
+  <span class="menu-icon">✉</span> Kontak
+ </button>
+
+ <p class="drawer-label">ACCOUNT</p>
+
+ <button class="menu-link"
+ onclick="logout()">
+  <span class="menu-icon">↪</span> Keluar
+ </button>
+
+</aside>
+
+<!-- ================================= -->
+<!-- PAGE 1: HOME -->
+<!-- ================================= -->
+
+<main id="home" class="page active">
+
+ <div class="content">
+
+  <div class="home-hero">
+
+   <div class="home-hero-content">
+
+    <span class="tag">OFFICIAL CIRQVEX COMPANY</span>
+
+    <h1>WELCOME TO<br>
+     <span>CIRQVEX OFFICIAL.</span>
+    </h1>
+
+    <p>
+     Selamat datang di CIRQVEX OFFICIAL. Kami menyediakan 
+     berbagai Desain PCB.
+    </p>
+
+    <button class="primary"
+     onclick="navigate('store')">
+     JELAJAHI TOKO →
+    </button>
+
+   </div>
+
+   <div class="hero-watermark">R</div>
+
+  </div>
+
+  <div class="company-section">
+
+   <h2>Profil Perusahaan</h2>
+
+   <p>
+    CIRQVEX OFFICIAL merupakan Store yang menyediakan
+    berbagai Jenis Rangkaian elektronik yang sudah siap 
+    cetak. Kami berkomitmen memberikan informasi produk
+    yang jelas dan pengalaman belanja yang mudah.
+   </p>
+
+   <div class="info-grid">
+
+    <div class="info-card">
+     <div class="symbol">◆</div>
+     <h3>Visi CIRQVEX OFFICIAL</h3>
+     <p>
+      Menjadi toko modern dengan layanan dan
+      pilihan produk yang terus berkembang.
+     </p>
+    </div>
+
+    <div class="info-card">
+     <div class="symbol">✦</div>
+     <h3>Misi CIRQVEX OFFICIAL</h3>
+     <p>
+      Menghadirkan produk pilihan dan
+      pengalaman belanja yang praktis.
+     </p>
+    </div>
+
+    <div class="info-card">
+     <div class="symbol">◎</div>
+     <h3>Layanan</h3>
+     <p>
+      Menyediakan informasi produk, pemesanan,
+      dan layanan pelanggan.
+     </p>
+    </div>
+
+   </div>
+
+  </div>
+
+  <div class="company-section">
+   <h2>Selamat Berbelanja</h2>
+   <p>
+    Gunakan menu navigasi di bagian kanan atas
+    untuk menjelajahi seluruh bagian website CIRQVEX OFFICIAL.
+   </p>
+  </div>
+
+ </div>
+
+ <footer>© 2026 CIRQVEX COMPANY</footer>
+</main>
+
+<!-- ================================= -->
+<!-- PAGE 2: STORE -->
+<!-- HANYA PRODUK -->
+<!-- ================================= -->
+
+<main id="store" class="page">
+
+ <div class="content">
+
+  <div class="page-title">
+   <h1> CIRQVEX <span style="color:#ed203b">STORE</span></h1>
+   <p>Temukan dan pilih produk yang tersedia.</p>
+  </div>
+
+  <div class="store-toolbar">
+   <input class="store-search"
+    id="search"
+    type="search"
+    placeholder="Cari produk..."
+    oninput="renderProducts()">
+
+   <button class="primary"
+    onclick="renderProducts()">Cari</button>
+  </div>
+
+  <div class="categories">
+
+   <button class="active"
+    onclick="setCategory('Semua',this)">Semua</button>
+
+   <button onclick="setCategory('Otomotif',this)">
+    Otomotif
+   </button>
+
+   <button onclick="setCategory('Audio',this)">
+    Audio
+   </button>
+
+   <button onclick="setCategory('Elektronik',this)">
+    Elektronik
+   </button>
+
+   <button onclick="setCategory('Aksesoris',this)">
+    Aksesoris
+   </button>
+
+  </div>
+
+  <div class="product-grid" id="productGrid"></div>
+
+ </div>
+
+ <!-- Tidak ada profil perusahaan atau footer toko -->
+
+</main>
+
+<!-- ================================= -->
+<!-- PAGE 3: GALLERY -->
+<!-- ================================= -->
+
+<main id="gallery" class="page">
+
+ <div class="content">
+
+  <div class="page-title">
+   <h1>Product <span style="color:#ed203b">Showcase</span></h1>
+   <p>Galeri pajangan dan koleksi CIRQVEX.</p>
+  </div>
+
+  <div class="gallery-grid" id="galleryGrid"></div>
+
+ </div>
+
+ <footer>© 2026 CIRQVEX SHOWCASE</footer>
+</main>
+
+<!-- ================================= -->
+<!-- PAGE 4: PAYMENT -->
+<!-- ================================= -->
+
+<main id="payment" class="page">
+
+ <div class="content">
+
+  <div class="page-title">
+   <h1>Shopping <span style="color:#ed203b">Cart</span></h1>
+   <p>Periksa keranjang dan lanjutkan pemesanan.</p>
+  </div>
+
+  <div class="payment-layout">
+
+   <div class="panel">
+    <h2>Daftar Produk</h2>
+    <div id="cartItems"></div>
+   </div>
+
+   <div class="panel">
+
+    <h2>Ringkasan Belanja</h2>
+
+    <div class="total-row">
+     <span>Total</span>
+     <span id="totalPrice">Rp0</span>
+    </div>
+
+    <form id="orderForm">
+
+     <div class="form-group">
+      <label>Nama penerima</label>
+      <input type="text" id="buyerName"
+       placeholder="Nama lengkap" required>
+     </div>
+
+     <div class="form-group">
+      <label>Nomor WhatsApp</label>
+      <input type="tel" id="buyerPhone"
+       placeholder="08xxxxxxxxxx" required>
+     </div>
+
+     <div class="form-group">
+      <label>Alamat pengiriman</label>
+      <textarea id="buyerAddress"
+       placeholder="Alamat lengkap" required></textarea>
+     </div>
+
+     <div class="form-group">
+      <label>Metode pembayaran</label>
+      <select id="method" required>
+       <option value="">Pilih metode</option>
+       <option>Transfer Bank</option>
+       <option>E-Wallet</option>
+       <option>COD</option>
+      </select>
+     </div>
+
+     <button type="submit" class="primary"
+      style="width:100%">
+      BUAT PESANAN →
+     </button>
+
+    </form>
+
+   </div>
+
+  </div>
+
+ </div>
+
+ <footer>© 2026 CIRQVEX PAYMENT</footer>
+</main>
+
+<!-- ================================= -->
+<!-- PAGE 5: PORTFOLIO -->
+<!-- ================================= -->
+
+<main id="portfolio" class="page">
+
+ <div class="content">
+
+  <div class="page-title">
+   <h1>Our <span style="color:#ed203b">Portfolio</span></h1>
+   <p>Informasi koleksi dan aktivitas CIRQVEX .</p>
+  </div>
+
+  <div class="portfolio-grid">
+
+   <div class="portfolio-card">
+    <div style="font-size:35px">🚗</div>
+    <h3>Automotive Collection</h3>
+    <p>Koleksi dan produk kategori otomotif.</p>
+   </div>
+
+   <div class="portfolio-card">
+    <div style="font-size:35px">🔊</div>
+    <h3>Audio Collection</h3>
+    <p>Berbagai pilihan perlengkapan audio.</p>
+   </div>
+
+   <div class="portfolio-card">
+    <div style="font-size:35px">💻</div>
+    <h3>Technology</h3>
+    <p>Produk teknologi dan elektronik.</p>
+   </div>
+
+   <div class="portfolio-card">
+    <div style="font-size:35px">💎</div>
+    <h3>Accessories</h3>
+    <p>Koleksi aksesoris pilihan.</p>
+   </div>
+
+  </div>
+
+ </div>
+
+ <footer>© 2026 CIRQVEX PORTFOLIO</footer>
+</main>
+
+<!-- ================================= -->
+<!-- PAGE 6: ABOUT -->
+<!-- ================================= -->
+
+<main id="about" class="page">
+
+ <div class="content">
+
+  <div class="page-title">
+   <h1>About <span style="color:#ed203b">CIRQVEX </span></h1>
+   <p>Mengenal lebih jauh tentang perusahaan.</p>
+  </div>
+
+  <div class="panel">
+   <h2>Tentang CIRQVEX </h2>
+   <p style="color:#aaa;line-height:2;font-size:14px">
+    CIRQVEX adalah brand toko yang dirancang untuk
+    menyediakan berbagai jenis produk dalam satu
+    platform digital. Website ini dibuat untuk
+    memudahkan pengunjung menemukan produk,
+    melihat koleksi, dan melakukan pemesanan.
+   </p>
+  </div>
+
+  <div class="company-section">
+   <h2>Visi dan Misi</h2>
+
+   <div class="info-grid">
+
+    <div class="info-card">
+     <h3>Visi</h3>
+     <p>Menjadi brand yang dikenal melalui kualitas layanan.</p>
+    </div>
+
+    <div class="info-card">
+     <h3>Misi</h3>
+     <p>Memberikan pilihan produk dan informasi yang jelas.</p>
+    </div>
+
+    <div class="info-card">
+     <h3>Komitmen</h3>
+     <p>Meningkatkan pengalaman pelanggan secara berkelanjutan.</p>
+    </div>
+
+   </div>
+  </div>
+
+ </div>
+
+ <footer>© 2026 CIRQVEX </footer>
+</main>
+
+<!-- ================================= -->
+<!-- PAGE 7: CONTACT -->
+<!-- ================================= -->
+
+<main id="contact" class="page">
+
+ <div class="content">
+
+  <div class="page-title">
+   <h1>Contact <span style="color:#ed203b">Us</span></h1>
+   <p>Informasi dan layanan pelanggan CIRQVEX .</p>
+  </div>
+
+  <div class="contact-grid">
+
+   <div class="contact-card">
+    <h3>✉ Email</h3>
+    <p>Alamat email resmi perusahaan dapat ditambahkan di sini.</p>
+   </div>
+
+   <div class="contact-card">
+    <h3>☎ WhatsApp</h3>
+    <p>Nomor layanan pelanggan dapat ditambahkan di sini.</p>
+   </div>
+
+   <div class="contact-card">
+    <h3>◎ Instagram</h3>
+    <p>Akun media sosial resmi CIRQVEX .</p>
+   </div>
+
+   <div class="contact-card">
+    <h3>⌖ Lokasi</h3>
+    <p>Alamat perusahaan atau toko dapat ditambahkan di sini.</p>
+   </div>
+
+  </div>
+
+ </div>
+
+ <footer>© 2026 CIRQVEX  CONTACT</footer>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script>
+
+/* =================================
+   PAGE NAVIGATION
+================================= */
+
+let currentPage = "home";
+
+function navigate(page) {
+
+ const target = document.getElementById(page);
+
+ if(!target) return;
+
+ document.querySelectorAll(".page")
+ .forEach(p => p.classList.remove("active"));
+
+ target.classList.add("active");
+
+ document.querySelectorAll(".menu-link")
+ .forEach(link => {
+  link.classList.toggle(
+   "active",
+   link.dataset.page === page
+  );
+ });
+
+ currentPage = page;
+
+ closeMenu();
+
+ window.scrollTo({
+  top:0,
+  behavior:"smooth"
+ });
+
+ if(page === "payment") {
+  updateCart();
+ }
+}
+
+/* BROWSER BACK */
+
+history.replaceState({page:"home"},"","#home");
+
+function goHistory(page) {
+ navigate(page);
+ history.pushState({page:page},"","#"+page);
+}
+
+window.onpopstate = function(e) {
+ const page = e.state?.page || "home";
+ navigate(page);
+};
+
+/* MENU */
+
+function openMenu() {
+ document.getElementById("drawer").classList.add("open");
+ document.getElementById("overlay").classList.add("show");
+}
+
+function closeMenu() {
+ document.getElementById("drawer").classList.remove("open");
+ document.getElementById("overlay").classList.remove("show");
+}
+
+/* =================================
+   PRODUCT DATA
+================================= */
+
+const products = [
+
+ {
+  id:1,
+  name:"Speaker Premium",
+  category:"Audio",
+  price:450000,
+  icon:"🔊",
+  description:"Speaker audio berkualitas."
+ },
+
+ {
+  id:2,
+  name:"Head Unit Mobil",
+  category:"Otomotif",
+  price:850000,
+  icon:"🚘",
+  description:"Perangkat hiburan kendaraan."
+ },
+
+ {
+  id:3,
+  name:"Lampu LED Mobil",
+  category:"Otomotif",
+  price:250000,
+  icon:"💡",
+  description:"Aksesoris pencahayaan kendaraan."
+ },
+
+ {
+  id:4,
+  name:"Wireless Headset",
+  category:"Audio",
+  price:250000,
+  icon:"🎧",
+  description:"Headset wireless modern."
+ },
+
+ {
+  id:5,
+  name:"Smart Watch",
+  category:"Elektronik",
+  price:350000,
+  icon:"⌚",
+  description:"Perangkat elektronik modern."
+ },
+
+ {
+  id:6,
+  name:"Premium Accessories",
+  category:"Aksesoris",
+  price:150000,
+  icon:"💎",
+  description:"Aksesoris pilihan."
+ },
+
+ {
+  id:7,
+  name:"Subwoofer Audio",
+  category:"Audio",
+  price:750000,
+  icon:"🔈",
+  description:"Komponen audio kendaraan."
+ },
+
+ {
+  id:8,
+  name:"Dash Camera",
+  category:"Otomotif",
+  price:550000,
+  icon:"📷",
+  description:"Kamera kendaraan."
+ }
+
+];
+
+let category = "Semua";
+let cart = [];
+
+function rupiah(n) {
+ return "Rp"+n.toLocaleString("id-ID");
+}
+
+/* =================================
+   STORE FILTER
+================================= */
+
+function setCategory(value,button) {
+
+ category = value;
+
+ document.querySelectorAll(".categories button")
+ .forEach(b => b.classList.remove("active"));
+
+ button.classList.add("active");
+
+ renderProducts();
+}
+
+/* =================================
+   RENDER STORE
+================================= */
+
+function renderProducts() {
+
+ const keyword =
+ document.getElementById("search").value.toLowerCase();
+
+ const result = products.filter(p => {
+
+  const matchCategory =
+   category === "Semua" || p.category === category;
+
+  const matchSearch =
+   p.name.toLowerCase().includes(keyword);
+
+  return matchCategory && matchSearch;
+
+ });
+
+ const grid = document.getElementById("productGrid");
+
+ if(result.length === 0) {
+  grid.innerHTML =
+   '<p class="empty">Produk tidak ditemukan.</p>';
+  return;
+ }
+
+ grid.innerHTML = result.map(p => `
+
+  <div class="product-card">
+
+   <div class="product-picture">
+    ${p.icon}
+   </div>
+
+   <div class="product-detail">
+
+    <small>${p.category}</small>
+
+    <h3>${p.name}</h3>
+
+    <p>${p.description}</p>
+
+    <div class="product-price">
+     ${rupiah(p.price)}
+    </div>
+
+    <button class="add-button"
+     onclick="addCart(${p.id})">
+     + Tambahkan ke keranjang
+    </button>
+
+   </div>
+
+  </div>
+
+ `).join("");
+
+}
+
+/* =================================
+   CART
+================================= */
+
+function addCart(id) {
+
+ const p = products.find(x => x.id === id);
+ const existing = cart.find(x => x.id === id);
+
+ if(existing) {
+  existing.qty++;
+ } else {
+  cart.push({...p,qty:1});
+ }
+
+ updateCart();
+ showToast("Produk berhasil ditambahkan.");
+}
+
+function removeCart(id) {
+ cart = cart.filter(p => p.id !== id);
+ updateCart();
+}
+
+function changeQty(id,amount) {
+
+ const p = cart.find(x => x.id === id);
+
+ if(!p) return;
+
+ p.qty += amount;
+
+ if(p.qty <= 0) {
+  removeCart(id);
+ } else {
+  updateCart();
+ }
+}
+
+function updateCart() {
+
+ const totalItems = cart.reduce(
+  (sum,p) => sum+p.qty,0
+ );
+
+ const total = cart.reduce(
+  (sum,p) => sum+(p.price*p.qty),0
+ );
+
+ document.getElementById("cartCount")
+ .textContent = totalItems;
+
+ document.getElementById("totalPrice")
+ .textContent = rupiah(total);
+
+ const container =
+ document.getElementById("cartItems");
+
+ if(cart.length === 0) {
+  container.innerHTML =
+   '<p class="empty">Keranjang masih kosong. Silakan pilih produk di toko.</p>';
+  return;
+ }
+
+ container.innerHTML = cart.map(p => `
+
+  <div class="order-row">
+
+   <div>
+    <strong>${p.name}</strong><br>
+    <span style="color:#999">
+     ${rupiah(p.price)}
+    </span>
+   </div>
+
+   <div style="text-align:right">
+    <button class="secondary"
+     onclick="changeQty(${p.id},-1)">−</button>
+
+    ${p.qty}
+
+    <button class="secondary"
+     onclick="changeQty(${p.id},1)">+</button>
+
+    <br>
+
+    <button onclick="removeCart(${p.id})"
+     style="background:none;color:#ff5266;border:0;margin-top:8px">
+     Hapus
+    </button>
+
+   </div>
+
+  </div>
+
+ `).join("");
+
+}
+
+/* =================================
+   GALLERY
+================================= */
+
+function renderGallery() {
+
+ const items = products.slice(0,6);
+
+ document.getElementById("galleryGrid")
+ .innerHTML = items.map(p => `
+
+  <div class="gallery-item">
+
+   <div class="gallery-image">
+    ${p.icon}
+   </div>
+
+   <h3>${p.name}</h3>
+
+  </div>
+
+ `).join("");
+
+}
+
+/* =================================
+   CHECKOUT DEMO
+================================= */
+
+document.getElementById("orderForm")
+.addEventListener("submit",function(e) {
+
+ e.preventDefault();
+
+ if(cart.length === 0) {
+  showToast("Keranjang masih kosong!");
+  return;
+ }
+
+ const name =
+ document.getElementById("buyerName").value;
+
+ const method =
+ document.getElementById("method").value;
+
+ const total = cart.reduce(
+  (sum,p) => sum+p.price*p.qty,0
+ );
+
+ const orderID =
+ "CIRQVEX -"+Date.now().toString().slice(-7);
+
+ alert(
+  "PESANAN BERHASIL DIBUAT\n\n"+
+  "Nomor: "+orderID+"\n"+
+  "Nama: "+name+"\n"+
+  "Metode: "+method+"\n"+
+  "Total: "+rupiah(total)+
+  "\n\nSimulasi pemesanan CIRQVEX ."
+ );
+
+ cart = [];
+
+ updateCart();
+
+ this.reset();
+
+ navigate("home");
+
+});
+
+/* =================================
+   TOAST
+================================= */
+
+let toastTimer;
+
+function showToast(message) {
+
+ const t = document.getElementById("toast");
+
+ t.textContent = message;
+ t.classList.add("show");
+
+ clearTimeout(toastTimer);
+
+ toastTimer = setTimeout(() => {
+  t.classList.remove("show");
+ },2500);
+
+}
+
+/* =================================
+   LOGOUT DEMO
+================================= */
+
+function logout() {
+
+ if(confirm("Apakah Anda ingin keluar?")) {
+  window.location.href = "index.html";
+ }
+
+}
+
+/* INITIALIZE */
+
+renderProducts();
+renderGallery();
+updateCart();
+
+</script>
+
+</body>
+</html>
